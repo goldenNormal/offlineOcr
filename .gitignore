@@ -5,3 +5,5 @@ freeze
 main.py
 
 /venv/
+
+/test/

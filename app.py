@@ -30,7 +30,19 @@ def toPngStr(image):
     send_str = 'data:image/png;base64,' + send_data[2:-1]
     return send_str
 
+def safeShape(img):
+    img = np.array(img)
+    shape = img.shape
+
+    if(shape[2]!=3):
+        res = img[:,:,:3]
+    else:
+        res = img
+    return  res
+
+
 def drawImg(result,image):
+    image = safeShape(image)
     boxes = [line[0] for line in result]
     txts = [line[1][0] for line in result]
     scores = [line[1][1] for line in result]
